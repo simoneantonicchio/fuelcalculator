@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
-#define DIM_VET 10
+
 
 /**
 * funzione che legge una cifra decimale o INVIO (non accetta altri caratteri)
