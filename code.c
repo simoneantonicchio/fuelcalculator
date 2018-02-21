@@ -12,7 +12,7 @@ int leggiCifra()
 int cifra;
 char carattere;
 carattere=getch();
-while((carattere<'0' && carattere!=13 && carattere!=4) || carattere>'9')
+while((carattere<'0' && carattere!=13 ) || carattere>'9')
 {
 carattere=getch();
 }
@@ -27,14 +27,14 @@ altri caratteri)
 * @RETURN il valore corrispondente al numero inserito
 */
 
-float leggiNumero()
+int leggiNumero()
 {
-float numero;
+int numero;
 int cifra;
 int contatore;
 numero=0;
 cifra=leggiCifra();
-for(contatore=0; contatore<3 && cifra>=0; contatore++)
+for(contatore=0; contatore<0 && cifra>=0; contatore++)
 {
 numero=numero*10+cifra;
 cifra=leggiCifra();
@@ -64,21 +64,38 @@ return(carattere);
 /* Calcolo carburante Beechcraft Baroon 58
 */
 void Beechcraft_Baron_58()
-{ float eet,endurance;
+{ float endurance,convertominuti;
   int carburante,c;
+  float eet;
+  int ore,ore1,ore2;
+  float minuti,minuti1,minuti2;
   c=0;
-  printf("Inserisci l'eet (Estimate Enroute Time) usando il punto come separatore ore/minuti:",eet);
-  for(c=0;c<5 || eet== 13  ;c++)
-  {eet=getche();
-   if(eet==44)
-   {c=-1;
-    printf("\n Attenzione!!Usa il punto come separatore ore/minuti:");
-   }
-  }
-   printf("\nIl carburante consigliato in libre \x8a:%d",carburante);
+  printf("Inserisci l'eet (Estimate Enroute Time) nel formato ore/minuti (hhmm):");
  
+  
+    ore1=leggiCifra();
+    ore2=leggiCifra();
+    printf("ore");
+    minuti1=leggiCifra();
+    minuti2=leggiCifra();
+    printf("minuti");
+  ore=ore1*10+ore2;
+  minuti=minuti1*10+minuti2;
+  convertominuti=(minuti/100);
+  eet=ore+convertominuti;
+  endurance=eet+1;
+  printf("\nEndurance:%.2f ore",endurance);
+  carburante=endurance*32;
+  if(carburante<166)
+  {
+  
+   printf("\nIl carburante consigliato in galloni \x8a:%d",carburante);
+  }
+  else
+  { printf("\nAttenzione! Avresti caricato a bordo %d galloni .Il limite massimo di carburante imbarcabile a bordo \x8a di 166 galloni.",carburante);
+  }
 }
-
+ 
 int main(int argc, char *argv[])
 {
   int vet[DIM_VET],scelta;
