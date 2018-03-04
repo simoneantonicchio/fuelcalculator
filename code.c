@@ -13,7 +13,7 @@ int leggiCifra()
 int cifra;
 char carattere;
 carattere=getch();
-while((carattere<'0' && carattere!=13  ) || carattere>'9')
+while((carattere<'0'   ) || carattere>'9')
 {
 carattere=getch();
 }
@@ -27,7 +27,7 @@ int leggiCifra_minuti()
 int cifra;
 char carattere;
 carattere=getch();
-while((carattere<'0' && carattere!=13  ) || carattere>'5')
+while((carattere<'0'  ) || carattere>'5')
 {
 carattere=getch();
 }
@@ -60,6 +60,10 @@ void Beechcraft_Baron_58()
   ore=ore1*10+ore2;
   minuti=minuti1*10+minuti2;
   convertominuti=(minuti/100);
+  if(convertominuti>0.20)
+  {ore=ore+1;
+   convertominuti=convertominuti-0.60;
+  }
   eet=ore+convertominuti;
   endurance=eet+0.4;
   printf("\nEndurance:%.2f ore",endurance);
@@ -95,6 +99,10 @@ void Da42()
   ore=ore1*10+ore2;
   minuti=minuti1*10+minuti2;
   convertominuti=(minuti/100);
+  if(convertominuti>0.20)
+  {ore=ore+1;
+   convertominuti=convertominuti-0.60;
+  }
   eet=ore+convertominuti;
   endurance=eet+0.4;
   printf("\nEndurance:%.2f ore",endurance);
@@ -130,6 +138,10 @@ void Phenom_100()
   ore=ore1*10+ore2;
   minuti=minuti1*10+minuti2;
   convertominuti=(minuti/100);
+  if(convertominuti>0.20)
+  {ore=ore+1;
+   convertominuti=convertominuti-0.60;
+  }
   eet=ore+convertominuti;
   endurance=eet+0.4;
   printf("\nEndurance:%.2f ore",endurance);
@@ -165,6 +177,10 @@ void Phenom_300()
   ore=ore1*10+ore2;
   minuti=minuti1*10+minuti2;
   convertominuti=(minuti/100);
+  if(convertominuti>0.20)
+  {ore=ore+1;
+   convertominuti=convertominuti-0.60;
+  }
   eet=ore+convertominuti;
   endurance=eet+0.4;
   printf("\nEndurance:%.2f ore",endurance);
@@ -200,6 +216,10 @@ void Learjet_45()
   ore=ore1*10+ore2;
   minuti=minuti1*10+minuti2;
   convertominuti=(minuti/100);
+  if(convertominuti>0.20)
+  {ore=ore+1;
+   convertominuti=convertominuti-0.60;
+  }
   eet=ore+convertominuti;
   endurance=eet+0.4;
   printf("\nEndurance:%.2f ore",endurance);
@@ -235,6 +255,10 @@ void Hawker_850()
   ore=ore1*10+ore2;
   minuti=minuti1*10+minuti2;
   convertominuti=(minuti/100);
+  if(convertominuti>0.20)
+  {ore=ore+1;
+   convertominuti=convertominuti-0.60;
+  }
   eet=ore+convertominuti;
   endurance=eet+0.4;
   printf("\nEndurance:%.2f ore",endurance);
@@ -270,6 +294,10 @@ void CRJ_700()
   ore=ore1*10+ore2;
   minuti=minuti1*10+minuti2;
   convertominuti=(minuti/100);
+  if(convertominuti>0.20)
+  {ore=ore+1;
+   convertominuti=convertominuti-0.60;
+  }
   eet=ore+convertominuti;
   endurance=eet+0.4;
   printf("\nEndurance:%.2f ore",endurance);
@@ -286,15 +314,19 @@ void CRJ_700()
   
 int main(int argc, char *argv[])
 {
-  int scelta;
+  int scelta,i;
   scelta=1;
+  i=0;
   printf(" ----------------------------------------------------");
    printf(" \n Calcolatore carburante della Royal Sky Service ");
    printf(" \n-----------------------------------------------------");
    printf("\n\n");
+   for(i=0;i<200;i++)
+   {
+   
    /* password*/
    char buffer[256] = {0};
-    char password[] = "Password";
+    char password[] = "Royal";
     char c;
     int pos = 0;
     
@@ -317,7 +349,7 @@ int main(int argc, char *argv[])
     if( !strcmp(buffer, password) )
     { 
 	
-        printf("\n%s\n", "Logged on succesfully!");
+        printf("\n%s\n", "Password valida!");
         //se la password coincide..
          printf(" Ciao pilota royal, scegli l'aereo :");
   
@@ -362,6 +394,7 @@ int main(int argc, char *argv[])
 									
 	  case 0:
                 printf("Grazie per aver usato il nostro programma\n");
+                i=200;
                 break;
       default: 
                 printf("Per favore introdurre una opzione valida\n");              
@@ -372,11 +405,12 @@ int main(int argc, char *argv[])
   }
 }
     else
-        printf("\n%s\n", "Incorrect login!");
+        printf("\n%s\n", "Password non valida!");
+        i++;
 
  
  
-  
+}
  
   	
  
