@@ -326,7 +326,7 @@ int main(int argc, char *argv[])
    
    /* password*/
    char buffer[256] = {0};
-    char password[] = "Royal";
+    char password[] = "//inserisci qui la password";
     char c;
     int pos = 0;
     
